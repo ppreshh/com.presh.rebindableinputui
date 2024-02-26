@@ -14,5 +14,12 @@
       "inputsystem",
       "input"
     ],
-    "author": "Prashant Naidu"
+    "author": "Prashant Naidu",
+    "samples": [
+      {
+        "displayName": "Sample UI",
+        "description": "A sample UI scene using the provided prefabs in the package.",
+        "path": "Samples~/SampleUI"
+      }
+    ]
   }
