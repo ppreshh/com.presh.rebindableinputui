@@ -9,16 +9,10 @@ This is a plug-n-play UI implementation for rebindable KBM and Controller/Gamepa
 - Composite controls are not rebindable; they will still be displayed in the UI with different formatting
 - There isn't any duplicate binding check
 
-**Package Download:**
-
-https://drive.google.com/file/d/1GvJuVSH3z3R0VeSTtgZZvophBU269ctU/view?usp=sharing
-
 **Setup:**
 
-1. Import the InputSystem package and TextMeshPro
-2. Import the package from the link above
-3. Create your InputActionAsset with the controls you would like for your game
-4. Create two control schemes in the InputActionAsset "KeyboardMouse" and "Gamepad", and mark the bindings in the InputActionAsset's InputActionMap accordingly
-5. Open the 'SampleUIScene' in the package
-6. In the hierarchy, click on InputManager and add the InputActionAsset you've created to it's InputActionAsset reference slot in the inspector. Also add the name of the InputActionMap that you want to be rebindable.
-7. Start the scene to see the UI in action
+1. Create your InputActionAsset with the controls you would like for your game
+2. Create two control schemes in the InputActionAsset "KeyboardMouse" and "Gamepad", and mark the bindings in the InputActionAsset's InputActionMap accordingly
+3. Open the 'SampleUIScene' in the package
+4. In the hierarchy, click on InputManager and add the InputActionAsset you've created to it's InputActionAsset reference slot in the inspector. Also add the name of the InputActionMap that you want to be rebindable.
+5. Start the scene to see the UI in action
