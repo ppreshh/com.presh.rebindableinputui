@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -39,17 +40,17 @@ namespace RebindableInputUI
         {
             m_InputAction = inputAction;
 
-            m_ActionText.text = m_InputAction.name;
+            m_ActionText.text = Regex.Replace(m_InputAction.name, @"(\B[A-Z])", " $1");
 
-            var kbmBindingIndex = m_InputAction.GetBindingIndex(InputManager.KeyboardAndMouseControlSchemeName);
-            var gamepadBindingIndex = m_InputAction.GetBindingIndex(InputManager.GamepadControlSchemeName);
+            var kbmBindingIndex = m_InputAction.GetBindingIndex(RebindingManager.KeyboardAndMouseControlSchemeName);
+            var gamepadBindingIndex = m_InputAction.GetBindingIndex(RebindingManager.GamepadControlSchemeName);
 
             if (m_InputAction.bindings[kbmBindingIndex].isPartOfComposite)
             {
                 string kbmDisplayString = default;
                 foreach (var binding in m_InputAction.bindings)
                 {
-                    if (binding.groups.Equals(InputManager.KeyboardAndMouseControlSchemeName)) kbmDisplayString += binding.ToDisplayString();
+                    if (binding.groups.Equals(RebindingManager.KeyboardAndMouseControlSchemeName)) kbmDisplayString += binding.ToDisplayString();
                 }
 
                 m_KeyboardMouseBindingText.text = kbmDisplayString;

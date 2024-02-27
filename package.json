@@ -17,9 +17,9 @@
     "author": "Prashant Naidu",
     "samples": [
       {
-        "displayName": "Sample UI",
-        "description": "A sample UI scene using the provided prefabs in the package with a sample input mapping.",
-        "path": "Samples~/SampleUI"
+        "displayName": "Sample Implementation",
+        "description": "A sample that implements a base UI to redbind a sample input mapping. A sample Input Manager is also provided to demonstrate how to setup your game's input alongside this package.",
+        "path": "Samples~/SampleImplementation"
       }
     ]
   }

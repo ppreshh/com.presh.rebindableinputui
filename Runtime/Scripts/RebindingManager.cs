@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace RebindableInputUI
 {
-    public class InputManager : MonoBehaviour
+    public class RebindingManager : MonoBehaviour
     {
         public static string GamepadControlSchemeName = "Gamepad";
         public static string KeyboardAndMouseControlSchemeName = "KeyboardMouse";
@@ -21,12 +21,6 @@ namespace RebindableInputUI
 
         public InputActionMap InputActionMap { get { return m_InputActionAsset.FindActionMap(m_ActionMapName); } }
 
-        public event EventHandler<ActionPerformedEventArgs> OnActionPerformed;
-        public class ActionPerformedEventArgs : EventArgs
-        {
-            public string Name;
-        }
-
         public event EventHandler<AnyButtonPressedEventArgs> OnAnyButtonPressed;
         public class AnyButtonPressedEventArgs : EventArgs
         {
@@ -36,7 +30,7 @@ namespace RebindableInputUI
 
         public event Action OnBindingsResetToDefault;
 
-        public static InputManager Instance { private set; get; }
+        public static RebindingManager Instance { private set; get; }
 
         private void Awake()
         {
@@ -52,20 +46,10 @@ namespace RebindableInputUI
             Load();
 
             Enable();
-
-            foreach (var action in InputActionMap.actions)
-            {
-                action.performed += Action_performed;
-            }
         }
 
         private void OnDestroy()
         {
-            foreach (var action in InputActionMap.actions)
-            {
-                action.performed -= Action_performed;
-            }
-
             Disable();
         }
 
@@ -156,12 +140,6 @@ namespace RebindableInputUI
             m_AnyButtonEventListener = null;
 
             Enable();
-        }
-
-        private void Action_performed(InputAction.CallbackContext obj)
-        {
-            Debug.Log($"{obj.action.name} performed.");
-            OnActionPerformed?.Invoke(this, new ActionPerformedEventArgs { Name = obj.action.name });
         }
     }
 }

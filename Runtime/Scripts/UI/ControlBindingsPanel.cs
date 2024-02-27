@@ -22,11 +22,11 @@ namespace RebindableInputUI
 
         private void Start()
         {
-            InputManager.Instance.OnBindingsResetToDefault += InputManager_OnBindingsResetToDefault;
+            RebindingManager.Instance.OnBindingsResetToDefault += RebindingManager_OnBindingsResetToDefault;
 
             m_ResetDefaultsButton.onClick.AddListener(() =>
             {
-                InputManager.Instance.ResetBindingsToDefault();
+                RebindingManager.Instance.ResetBindingsToDefault();
             });
 
             RefreshBindingButtons();
@@ -34,14 +34,14 @@ namespace RebindableInputUI
 
         private void OnDestroy()
         {
-            InputManager.Instance.OnBindingsResetToDefault -= InputManager_OnBindingsResetToDefault;
+            RebindingManager.Instance.OnBindingsResetToDefault -= RebindingManager_OnBindingsResetToDefault;
 
             m_ResetDefaultsButton.onClick.RemoveAllListeners();
 
             ClearControlBindingButtons();
         }
 
-        private void InputManager_OnBindingsResetToDefault()
+        private void RebindingManager_OnBindingsResetToDefault()
         {
             RefreshBindingButtons();
         }
@@ -50,10 +50,10 @@ namespace RebindableInputUI
         {
             ClearControlBindingButtons();
 
-            foreach (var action in InputManager.Instance.InputActionMap.actions)
+            foreach (var action in RebindingManager.Instance.InputActionMap.actions)
             {
-                var kbmBindingIndex = action.GetBindingIndex(InputManager.KeyboardAndMouseControlSchemeName);
-                var gmpdBindingIndex = action.GetBindingIndex(InputManager.GamepadControlSchemeName);
+                var kbmBindingIndex = action.GetBindingIndex(RebindingManager.KeyboardAndMouseControlSchemeName);
+                var gmpdBindingIndex = action.GetBindingIndex(RebindingManager.GamepadControlSchemeName);
                 if ((action.bindings[kbmBindingIndex].isPartOfComposite || action.bindings[gmpdBindingIndex].isPartOfComposite) && !m_ShowCompositeBindings) continue;
 
                 var controlBindingButton = Instantiate(m_ControlBindingButtonPrefab, m_ControlBindingButtonsParentTransform);
@@ -78,26 +78,26 @@ namespace RebindableInputUI
 
         private void ControlBindingButton_OnClicked(object sender, EventArgs e)
         {
-            if (InputManager.Instance.IsListeningForAnyButton) return;
+            if (RebindingManager.Instance.IsListeningForAnyButton) return;
 
             m_CurrentControlBindingButtonToRebind = sender as ControlBindingButton;
 
-            InputManager.Instance.OnAnyButtonPressed += Controls_OnAnyButtonPressed;
-            InputManager.Instance.StartListeningForAnyButton();
+            RebindingManager.Instance.OnAnyButtonPressed += Controls_OnAnyButtonPressed;
+            RebindingManager.Instance.StartListeningForAnyButton();
         }
 
-        private void Controls_OnAnyButtonPressed(object sender, InputManager.AnyButtonPressedEventArgs e)
+        private void Controls_OnAnyButtonPressed(object sender, RebindingManager.AnyButtonPressedEventArgs e)
         {
             if (!(e.InputDevice is Keyboard || e.InputDevice is Mouse || e.InputDevice is Gamepad)) return;
 
             string controlScheme = default;
-            if (e.InputDevice is Keyboard || e.InputDevice is Mouse) controlScheme = InputManager.KeyboardAndMouseControlSchemeName;
-            else if (e.InputDevice is Gamepad) controlScheme = InputManager.GamepadControlSchemeName;
+            if (e.InputDevice is Keyboard || e.InputDevice is Mouse) controlScheme = RebindingManager.KeyboardAndMouseControlSchemeName;
+            else if (e.InputDevice is Gamepad) controlScheme = RebindingManager.GamepadControlSchemeName;
 
-            InputManager.Instance.OnAnyButtonPressed -= Controls_OnAnyButtonPressed;
+            RebindingManager.Instance.OnAnyButtonPressed -= Controls_OnAnyButtonPressed;
 
-            InputManager.Instance.StopListeningForAnyButton();
-            InputManager.Instance.ReplaceBinding(controlScheme, m_CurrentControlBindingButtonToRebind.InputAction, e.ControlPath);
+            RebindingManager.Instance.StopListeningForAnyButton();
+            RebindingManager.Instance.ReplaceBinding(controlScheme, m_CurrentControlBindingButtonToRebind.InputAction, e.ControlPath);
 
             m_CurrentControlBindingButtonToRebind.Refresh();
         }
