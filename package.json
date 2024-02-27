@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "displayName": "Rebindable Input UI",
     "description": "This is a plug-n-play UI implementation for rebindable Keyboard/Mouse and Controller/Gamepad controls using Unity's InputSystem. The implementation most closely resembles Rocket League's controls/bindings UI (check out the sample).",
-    "documentationUrl": "https://github.com/ppreshh/Rebindable-Input",
+    "documentationUrl": "https://github.com/ppreshh/com.presh.rebindableinputui",
     "dependencies": {
       "com.unity.inputsystem": "1.7.0",
       "com.unity.textmeshpro": "3.0.6"
@@ -14,7 +14,11 @@
       "inputsystem",
       "input"
     ],
-    "author": "Prashant Naidu <naidu.s.prashant@gmail.com> (https://github.com/ppreshh)",
+    "author": {
+      "name": "Prashant Naidu",
+      "email": "naidu.s.prashant@gmail.com",
+      "url": "https://github.com/ppreshh"
+    },
     "samples": [
       {
         "displayName": "Sample Implementation",
