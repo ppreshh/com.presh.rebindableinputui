@@ -2,7 +2,7 @@
 
 This is a plug-n-play UI implementation for rebindable KBM and Controller/Gamepad controls using Unity's InputSystem. The implementation most closely resembles Rocket League's controls/bindings UI.
 
-![image](https://github.com/ppreshh/Rebindable-Input/assets/17578313/faea4549-8e6d-4473-95dd-74150e3e64ac)
+![image](https://github.com/ppreshh/com.presh.rebindableinputui/assets/17578313/3b3c909d-4a33-48c8-b1bb-44cfbfbff492)
 
 **Current Drawbacks:**
 
