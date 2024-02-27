@@ -13,6 +13,6 @@ This is a plug-n-play UI implementation for rebindable KBM and Controller/Gamepa
 
 1. Create your InputActionAsset with the controls you would like for your game
 2. Create two control schemes in the InputActionAsset "KeyboardMouse" and "Gamepad", and mark the bindings in the InputActionAsset's InputActionMap accordingly
-3. Open the 'SampleUIScene' in the package
-4. In the hierarchy, click on InputManager and add the InputActionAsset you've created to it's InputActionAsset reference slot in the inspector. Also add the name of the InputActionMap that you want to be rebindable.
+3. Import the sample implementation from the package's samples section
+4. In the hierarchy, click on RebindingManager and add the InputActionAsset you've created to it's InputActionAsset reference slot in the inspector. Also add the name of the InputActionMap that you want to be rebindable.
 5. Start the scene to see the UI in action
