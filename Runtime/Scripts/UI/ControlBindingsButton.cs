@@ -50,10 +50,10 @@ namespace RebindableInputUI
                 string kbmDisplayString = default;
                 foreach (var binding in m_InputAction.bindings)
                 {
-                    if (binding.groups.Equals(RebindingManager.KeyboardAndMouseControlSchemeName)) kbmDisplayString += binding.ToDisplayString();
+                    if (binding.groups.Equals(RebindingManager.KeyboardAndMouseControlSchemeName)) kbmDisplayString += (binding.ToDisplayString() + ", ");
                 }
 
-                m_KeyboardMouseBindingText.text = kbmDisplayString;
+                m_KeyboardMouseBindingText.text = kbmDisplayString.Substring(0, kbmDisplayString.Length - 2);
             }
             else
             {
