@@ -15,8 +15,7 @@ https://youtu.be/xPN4kGig21A
 ### Setup:
 
 **Use the sample in the package as reference**
-![image](https://github.com/ppreshh/com.presh.rebindableinputui/assets/17578313/e6696272-c225-47c6-9acd-426fdc023b7d)
-
+![image](https://github.com/ppreshh/com.presh.rebindableinputui/assets/17578313/db7168d5-8240-4533-b337-6d809eaf50e7)
 
 1. Create your InputActionAsset with the controls you would like for your game
 2. Create two control schemes in the InputActionAsset "KeyboardMouse" and "Gamepad", and mark the bindings in the InputActionAsset's InputActionMap accordingly (there must be a binding for both controller schemes for every action)
