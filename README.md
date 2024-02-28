@@ -18,7 +18,7 @@ https://youtu.be/xPN4kGig21A
 ![image](https://github.com/ppreshh/com.presh.rebindableinputui/assets/17578313/db7168d5-8240-4533-b337-6d809eaf50e7)
 
 1. Create your InputActionAsset with the controls you would like for your game
-2. Create two control schemes in the InputActionAsset "KeyboardMouse" and "Gamepad", and mark the bindings in the InputActionAsset's InputActionMap accordingly (there must be a binding for both controller schemes for every action)
+2. Create two control schemes in the InputActionAsset "KeyboardMouse" and "Gamepad", and mark the bindings in the InputActionAsset's InputActionMap accordingly
 3. Create an Empty Gameobject in your scene named 'RebindingManager' and add the component RebindingManager
 4. In this component, hook up the InputActionAsset and add the name of the ActionMap that you want to be rebindable
 5. Add a UI Canvas to your scene
