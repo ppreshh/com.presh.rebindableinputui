@@ -50,15 +50,13 @@ namespace RebindableInputUI
         {
             ClearControlBindingButtons();
 
-            foreach (var action in RebindingManager.Instance.InputActionMap.actions)
+            foreach (var inputAction in RebindingManager.Instance.InputActionMap.actions)
             {
-                var kbmBindingIndex = action.GetBindingIndex(RebindingManager.KeyboardAndMouseControlSchemeName);
-                var gmpdBindingIndex = action.GetBindingIndex(RebindingManager.GamepadControlSchemeName);
-                if ((action.bindings[kbmBindingIndex].isPartOfComposite || action.bindings[gmpdBindingIndex].isPartOfComposite) && !m_ShowCompositeBindings) continue;
+                if (inputAction.IsComposite() && !m_ShowCompositeBindings) continue;
 
                 var controlBindingButton = Instantiate(m_ControlBindingButtonPrefab, m_ControlBindingButtonsParentTransform);
 
-                controlBindingButton.Init(action);
+                controlBindingButton.Init(inputAction);
 
                 controlBindingButton.OnClicked += ControlBindingButton_OnClicked;
 
@@ -93,6 +91,8 @@ namespace RebindableInputUI
             string controlScheme = default;
             if (e.InputDevice is Keyboard || e.InputDevice is Mouse) controlScheme = RebindingManager.KeyboardAndMouseControlSchemeName;
             else if (e.InputDevice is Gamepad) controlScheme = RebindingManager.GamepadControlSchemeName;
+
+            if (m_CurrentControlBindingButtonToRebind.InputAction.GetBindingIndex(controlScheme) == -1) return;
 
             RebindingManager.Instance.OnAnyButtonPressed -= Controls_OnAnyButtonPressed;
 

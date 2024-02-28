@@ -45,30 +45,44 @@ namespace RebindableInputUI
             var kbmBindingIndex = m_InputAction.GetBindingIndex(RebindingManager.KeyboardAndMouseControlSchemeName);
             var gamepadBindingIndex = m_InputAction.GetBindingIndex(RebindingManager.GamepadControlSchemeName);
 
-            if (m_InputAction.bindings[kbmBindingIndex].isPartOfComposite)
+            if (kbmBindingIndex == -1)
             {
-                string kbmDisplayString = default;
-                foreach (var binding in m_InputAction.bindings)
-                {
-                    if (binding.groups.Equals(RebindingManager.KeyboardAndMouseControlSchemeName)) kbmDisplayString += (binding.ToDisplayString() + ", ");
-                }
-
-                m_KeyboardMouseBindingText.text = kbmDisplayString.Substring(0, kbmDisplayString.Length - 2);
+                m_KeyboardMouseBindingText.gameObject.SetActive(false);
             }
             else
             {
-                m_KeyboardMouseBindingText.text = m_InputAction.GetBindingDisplayString(kbmBindingIndex);
+                if (m_InputAction.bindings[kbmBindingIndex].isPartOfComposite)
+                {
+                    string kbmDisplayString = default;
+                    foreach (var binding in m_InputAction.bindings)
+                    {
+                        if (binding.groups.Equals(RebindingManager.KeyboardAndMouseControlSchemeName)) kbmDisplayString += (binding.ToDisplayString() + ", ");
+                    }
+
+                    m_KeyboardMouseBindingText.text = kbmDisplayString.Substring(0, kbmDisplayString.Length - 2);
+                }
+                else
+                {
+                    m_KeyboardMouseBindingText.text = m_InputAction.GetBindingDisplayString(kbmBindingIndex);
+                }
             }
 
-            m_GamepadBindingText.text = m_InputAction.GetBindingDisplayString(gamepadBindingIndex, out string deviceLayoutName, out string controlPath);
-            if (m_GamepadIconLibrary.TryGetSprite(deviceLayoutName, controlPath, out Sprite sprite))
+            if (gamepadBindingIndex == -1)
             {
                 m_GamepadBindingText.gameObject.SetActive(false);
-                m_GamepadIconImage.sprite = sprite;
-                m_GamepadIconImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                m_GamepadBindingText.text = m_InputAction.GetBindingDisplayString(gamepadBindingIndex, out string deviceLayoutName, out string controlPath);
+                if (m_GamepadIconLibrary.TryGetSprite(deviceLayoutName, controlPath, out Sprite sprite))
+                {
+                    m_GamepadBindingText.gameObject.SetActive(false);
+                    m_GamepadIconImage.sprite = sprite;
+                    m_GamepadIconImage.gameObject.SetActive(true);
+                }
             }
 
-            if (m_InputAction.bindings[kbmBindingIndex].isPartOfComposite || m_InputAction.bindings[gamepadBindingIndex].isPartOfComposite)
+            if (m_InputAction.IsComposite())
             {
                 m_Button.interactable = false;
                 m_Button.image.enabled = false;
