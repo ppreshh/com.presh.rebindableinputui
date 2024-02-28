@@ -1,29 +1,29 @@
 {
-    "name": "com.presh.rebindableinputui",
-    "version": "0.0.2",
-    "displayName": "Rebindable Input UI",
-    "description": "This is a plug-n-play UI implementation for rebindable Keyboard/Mouse and Controller/Gamepad controls using Unity's InputSystem. The implementation most closely resembles Rocket League's controls/bindings UI (check out the sample).",
-    "documentationUrl": "https://github.com/ppreshh/com.presh.rebindableinputui",
-    "dependencies": {
-      "com.unity.inputsystem": "1.7.0",
-      "com.unity.textmeshpro": "3.0.6"
-    },
-    "keywords": [
-      "rebind",
-      "ui",
-      "inputsystem",
-      "input"
-    ],
-    "author": {
-      "name": "Prashant Naidu",
-      "email": "naidu.s.prashant@gmail.com",
-      "url": "https://github.com/ppreshh"
-    },
-    "samples": [
-      {
-        "displayName": "Sample Implementation",
-        "description": "A sample that implements a base UI to redbind a sample input mapping. A sample Input Manager is also provided to demonstrate how to setup your game's input alongside this package.",
-        "path": "Samples~/SampleImplementation"
-      }
-    ]
-  }
+  "name": "com.presh.rebindableinputui",
+  "version": "1.0.1",
+  "displayName": "Rebindable Input UI",
+  "description": "This is a plug-n-play UI implementation for rebindable Keyboard/Mouse and Controller/Gamepad controls using Unity's InputSystem. The implementation most closely resembles Rocket League's controls/bindings UI (check out the sample).",
+  "documentationUrl": "https://github.com/ppreshh/com.presh.rebindableinputui",
+  "dependencies": {
+    "com.unity.inputsystem": "1.7.0",
+    "com.unity.textmeshpro": "3.0.6"
+  },
+  "keywords": [
+    "rebind",
+    "ui",
+    "inputsystem",
+    "input"
+  ],
+  "author": {
+    "name": "Prashant Naidu",
+    "email": "naidu.s.prashant@gmail.com",
+    "url": "https://github.com/ppreshh"
+  },
+  "samples": [
+    {
+      "displayName": "Sample Implementation",
+      "description": "A sample that implements a base UI to redbind a sample input mapping. A sample Input Manager is also provided to demonstrate how to setup your game's input alongside this package.",
+      "path": "Samples~/SampleImplementation"
+    }
+  ]
+}
