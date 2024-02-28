@@ -83,12 +83,12 @@ namespace RebindableInputUI
 
         public void EnablePlayerControls()
         {
-            RebindingManager.Instance.Enable();
+            RebindingManager.Instance.InputActionMap.Enable();
         }
 
         public void DisablePlayerControls()
         {
-            RebindingManager.Instance.Disable();
+            RebindingManager.Instance.InputActionMap.Disable();
         }
     }
 }
