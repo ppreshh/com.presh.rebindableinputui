@@ -80,5 +80,15 @@ namespace RebindableInputUI
         {
             OnLockOnPerformed?.Invoke();
         }
+
+        public void EnablePlayerControls()
+        {
+            RebindingManager.Instance.Enable();
+        }
+
+        public void DisablePlayerControls()
+        {
+            RebindingManager.Instance.Disable();
+        }
     }
 }
