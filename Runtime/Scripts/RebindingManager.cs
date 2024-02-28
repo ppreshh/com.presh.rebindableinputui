@@ -110,10 +110,12 @@ namespace RebindableInputUI
 
         public void ReplaceBinding(string controlSchemeName, InputAction inputAction, string bindingPath)
         {
-            inputAction.Disable();
+            if (m_InputActionAsset.enabled) inputAction.Disable();
+
             inputAction.RemoveBindingOverride(InputBinding.MaskByGroup(controlSchemeName));
             inputAction.ApplyBindingOverride(bindingPath, controlSchemeName);
-            inputAction.Enable();
+
+            if (m_InputActionAsset.enabled) inputAction.Enable();
 
             Save();
         }
