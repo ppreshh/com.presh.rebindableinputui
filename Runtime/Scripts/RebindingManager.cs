@@ -48,11 +48,6 @@ namespace RebindableInputUI
             Enable();
         }
 
-        private void OnDestroy()
-        {
-            Disable();
-        }
-
         [ContextMenu("Save Controls")]
         public void Save()
         {
@@ -125,8 +120,6 @@ namespace RebindableInputUI
 
         public void StartListeningForAnyButton()
         {
-            Disable();
-
             m_AnyButtonEventListener = InputSystem.onAnyButtonPress.Call(control =>
             {
                 //Debug.Log($"Any button pressed: {control.device}, {control.path}");
@@ -138,8 +131,6 @@ namespace RebindableInputUI
         {
             m_AnyButtonEventListener.Dispose();
             m_AnyButtonEventListener = null;
-
-            Enable();
         }
     }
 }
