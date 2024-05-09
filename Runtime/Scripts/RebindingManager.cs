@@ -75,24 +75,12 @@ namespace RebindableInputUI
         [ContextMenu("Enable Controls")]
         public void Enable()
         {
-            if (m_InputActionAsset.enabled)
-            {
-                Debug.LogWarning("Controls already enabled.");
-                return;
-            }
-
             m_InputActionAsset.Enable();
         }
 
         [ContextMenu("Disable Controls")]
         public void Disable()
         {
-            if (!m_InputActionAsset.enabled)
-            {
-                Debug.LogWarning("Controls already disabled.");
-                return;
-            }
-
             m_InputActionAsset.Disable();
         }
 
